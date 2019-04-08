@@ -260,7 +260,7 @@ def downVoteComment():
     # 没赞过返回0颜色变深
     else:
         return jsonify(1), 200
-    # 赞过了返回1颜色不变
+
 
 
 
