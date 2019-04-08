@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/homepage.css') }}">
+{% endblock %}
+{% block main %}
+        <h4>Add subject Here</h4>
+<form action="/" method=post>
+     <div class="form-group">
+        <input type="text" class="form-control" placeholder="You can add Subject here before publish " name="subject_name" required="required">
+  </div>
+   <div class="form-group" style="text-align:right ">
+        <button class="btn">Add Subject</button>
+  </div>
+</form>
+    <ul>
+    {% for subject in subjects %}
+    <li>
+        <div class="subject-group">
+            <p class="subject-name"><a href="{{ url_for('subjectDetail',subject_id=subject.id) }}">{{ subject.name }}</a></p>
+        </div>
+           {% for article in subject.articles %}
+          <div class="article-group">
+            <p class="article-title"><a href="{{ url_for('detail',article_id=article.id) }}">{{ article.title }}</a></p>
+            <p class="article-content">
+             {{ article.abstract }}
+            </p>
+        </div>
+                      <div class="article-information">
+            <span class="article_viewCount">viewCount: {{ article.viewCount}}</span>
+            <span class="article-time"> {{ article.createTime}}</span>
+        </div>
+
+           {% endfor %}
+    </li>
+      {% endfor %}
+    </ul>
+{% endblock %}
