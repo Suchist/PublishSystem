@@ -1,0 +1,19 @@
+ul{
+    list-style: none;
+}
+ul li{
+    border-bottom: 1px solid cornflowerblue;
+    overflow: hidden;
+    padding: 10px 0px;
+}
+.article-title a{
+   color:#da815f;
+    font-weigth:900;
+    font-size: larger;
+}
+.article-information {
+    text-align: right;
+}
+.article-information .author-name{
+    margin-right: 20px;
+}
