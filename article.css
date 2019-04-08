@@ -1,0 +1,25 @@
+.comment-list{
+        padding-left: 0;
+}
+.comment-list li{
+    list-style: none;
+}
+.user-info{
+    font-size: 16px;
+}
+.user-info .author-email{
+    margin-left: 20px;
+}
+.user-info .comment-time{
+    float:right;
+}
+.article_info .title{
+    margin-bottom: 20px;
+}
+.article_vote{
+     margin-right: 20px;
+}
+.comment_vote{
+    margin-right: 20px;
+}
+
