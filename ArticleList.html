@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}ArticleList{% endblock %}
+{% block head %}
+        <link rel="stylesheet" href="{{ url_for('static',filename='CSS/homepage.css') }}">
+{% endblock %}
+{% block main %}
+    <ul>
+    <h1>Subject Article List</h1>
+
+    {% for article in subject.articles %}
+    <li>
+          <div class="article-group">
+            <p class="article-title"><a href="{{ url_for('detail',article_id=article.id) }}">{{ article.title }}</a></p>
+            <p class="article-content">
+             {{ article.abstract }}
+                {{ article.highlight }}
+                {{ article.abstract }}
+            </p>
+        </div>
+                      <div class="article-information">
+            <span class="author-email"> {{ article.author.email}}</span>
+            <span class="article-time"> {{ article.createTime}}</span>
+        </div>
+    </li>
+      {% endfor %}
+    </ul>
+
+    <hr>
+
+{% endblock %}
