@@ -1,0 +1,184 @@
+{% extends 'base.html'%}
+{% block title %}文章详情{% endblock %}
+<link rel="stylesheet" href="{{ url_for('static',filename='CSS/article.css') }}">
+{% block head %}
+
+{% endblock %}
+{% block main %}
+
+<h3 align="center" class="article_title">
+ {{ article.title }}
+</h3>
+<hr>
+<p align="center"  class="article_info">
+<span>AuthorEmail:  {{ article.author.email}} </span>
+<span>Time:{{ article.createTime }} </span>
+</p>
+  <hr>
+    <p class="article_abstract">
+<h5>Abstract: </h5>{{ article.abstract}}
+</p>
+        <p class="article_highlight ">
+<h5>Highlight:</h5>{{ article.highlight }}
+</p>
+    <br>
+    <h5>Content</h5>
+ {{ article.content }}
+</p>
+    <a href="/download/{{ article.id }}"><img src={{ url_for('static',filename='Image/download.jpg') }}
+															width="20" height="20"  /></a>
+
+    <div class="article_vote">
+        <p class="article_content" aid="{{ article.id }}"></p>
+            <span style="background-color: #434F77;"  class="badge badge-info" id="upvote"> 赞</span>
+          <span id="unlike">{{article.likeNumber}}</span>
+          <span style="background-color: #0079D7;"  class="badge badge-info" id="downvote" >  灭 </span>
+          <span id="unlike">{{article.unlikeNumber}}</span>
+               <span  class="badge badge-info" id="tip"  style="color:red;"></span>
+    </div>
+    <div article_score>
+    浏览次数：<span>{{ article.viewCount }}</span>
+    </div>
+        <hr>
+    </li>
+<hr>
+<h4>Comment:(count):</h4>
+<form action="/comment/" method=post>
+     <div class="form-group">
+        <input type="text" class="form-control" placeholder="input your Email " name="email">
+  </div>
+     <div class="form-group">
+        <input type="text" class="form-control" placeholder="input your comment " name="comment">
+  </div>
+     <div class="form-group">
+        <input type="hidden" class="form-control" name="article_id" value="{{article.id}}">
+  </div>
+   <div class="form-group" style="text-align:right ">
+        <button class="btn">Comment</button>
+  </div>
+
+</form>
+
+    <ul class="comment-list">
+{%for comment in article.comments %}
+    <li >
+        <div class="comment-infor">
+ <span class="author-email">{{ comment.author.email }}</span>
+<span class="comment-time">{{ comment.creatTime }}</span>
+        </div>
+        <p class="comment-content">{{ comment.content }}</p>
+
+  <div class="comment_vote">
+        <p class="comment_content" cid="{{ comment.id }}" ></p>
+            <span style="background-color: #434F77;"  class="badge badge-info" id="upvoteComment"> 赞</span>
+          <span id="like_comment">{{comment.likeNumber}}</span>
+          <span style="background-color: #0079D7;"  class="badge badge-info" id="downvoteComment" >  灭 </span>
+          <span id="unlike_comment">{{comment.unlikeNumber}}</span>
+               <span  class="badge badge-info" id="comment_tip"  style="color:red;"></span>
+    </div>
+    </li>
+
+ {% endfor %}
+    <div>  <a href="/donation"><img src={{ url_for('static',filename='Image/reward.png') }}
+															width="20" height="20"  />我要小额鼓励作者写出更好的文章</a>
+
+    </div>
+    </ul>
+    <script>
+var aid=$(".article_content").attr("aid");
+  $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:5000/isLikedById",
+         data:{aid:aid},
+         success:function(data){
+        if(data==0){
+             $("#upvote").css("background-color","#0079D7");
+             $("#downvote").css("background-color","#434F77");
+        }
+        if(data==1){
+             $("#upvote").css("background-color","#DC143C");
+        }
+        if(data==2){
+             $("#downvote").css("background-color","#DC143C");
+        }
+    }
+    });
+$("#upvote").click(function () {
+     $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/upVote",
+           data:{aid:aid},
+             success: function(data){
+                 if(data==0){
+                      var val = parseInt($("#like").text());
+                            $("#like").text(val+1);
+             $("#upvote").css("background-color","#DC143C");
+        }
+        if(data==1){
+            $("#tip").html("您已经推荐过了！")
+              $("#downvote").css("background-color","#DC143C");
+        }
+                      },
+         });
+})
+    $("#downvote").click(function () {
+     $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/downVote",
+           data:{aid:aid},
+             success: function(data){
+                 if(data==0){
+              var val = parseInt($("#unlike").text());
+                            $("#unlike").text(val+1);
+             $("#downvote").css("background-color","#DC143C");
+        }
+        if(data==1){
+             $("#tip").html("您已经灭过了！")
+            $("#downvote").css("background-color","#DC143C");
+        }
+                      },
+         });
+})
+
+
+
+    var cid=$(".comment_content").attr("cid");
+$("#upvoteComment").click(function () {
+     $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/upVoteComment",
+           data:{cid:cid},
+             success: function(data){
+                 if(data==0){
+                      var val = parseInt($("#like_comment").text());
+                            $("#like_comment").text(val+1);
+             $("#upvoteComment").css("background-color","#DC143C");
+        }
+        if(data==1){
+            $("#comment_tip").html("您已经推荐过了！")
+              $("#upvoteComment").css("background-color","#DC143C");
+        }
+                      },
+         });
+})
+    $("#downvoteComment").click(function () {
+     $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/downVoteComment",
+           data:{cid:cid},
+             success: function(data){
+                 if(data==0){
+              var val = parseInt($("#unlike_comment").text());
+                            $("#unlike_comment").text(val+1);
+             $("#downvoteComment").css("background-color","#DC143C");
+        }
+        if(data==1){
+             $("#comment_tip").html("您已经灭过了！")
+            $("#downvoteComment").css("background-color","#DC143C");
+        }
+                      },
+         });
+})
+    </script>
+{% endblock %}
+
