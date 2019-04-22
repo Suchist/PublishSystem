@@ -11,7 +11,12 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/red.css" rel="stylesheet">
+<style>
+    p,li,h3,h4{
+      line-height:2
+    }
 
+</style>
 </head>
 
 <body class=" ">
@@ -35,7 +40,7 @@
                             <!-- logo -->
 
                             <div id="logo" class="logo">
-                                <a href="/"><img id="logo_img" src="images/logo.png" width="200px" height="200px"></a>
+                                <a href="/"><img id="logo_img" src="images/LOGO.png" width="200px" height="50px"></a>
                             </div>
 
 
@@ -133,7 +138,7 @@
                                             </div>
                                             <div class="body">
                                                 <h3>License</h3>
-                                                <p></p>
+                                                <p>License is a copyright license equivalent to software copyright.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +161,7 @@
                                             </div>
                                             <div class="body">
                                                 <h3>Development Status</h3>
-                                                <p>We will keep improve our project.</p>
+                                                <p>We will keep improving our project</p>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +206,7 @@
                     <h1 class="page-title">Mission Statement</h1>
                     <div class="region region-content">
                         <div id="block-system-main" class="block block-system clearfix">
-                            <h3>We had implemented part of requirements, the following is mission statement of our
+                            <h3>We had implemented part of requirements, the followings are mission statements of our
                                 system:</h3>
                             <div class="content">
 
@@ -209,18 +214,23 @@
 
                                 <ol style="font-size:18px;">
 
-                                    <li>Show popularity score.</li>
-                                    <li>The same subject cannot be created twice.</li>
-                                    <li>Popular articles are shown in a prominent place under each subject.
-                                    </li>
+                                    <li>This project concerns free, community-based, and open academic publishing.</li>
+                                    <li>Provide open access publishing service for the Zhejiang Normal University, extensible to other universities
+                                        in the world.</li>
+                                    <li>The authors using the service are free to create new subjects (forums).</li>
+                                    <li>The authors using the service are not required to register for publishing. Instead, they just need to
+                                        provide their valid email addresses.</li>
+                                    <li>The articles are freely downloadable as PDF files.</li>
                                     <li>The full email addresses of authors are not displayed in the service's web
                                         pages.
                                     </li>
-                                    <li>Popularity metrics.</li>
-                                    <li>Hide an article.</li>
-                                    <li>Remove an article.</li>
-                                    <li>Remove a comment.</li>
-                                    <li>Improve project quality.</li>
+                                    <li>Adopt a Commit-Then-Review model, which means articles will be published immediately under a
+                                        selected subject after the author(s) clicked the submit button.</li>
+                                    <li>The articles published to the service can be commented by unlimited number of reviewers,therefore, the service can be considered
+                                        as a more democratic peer-review model. </li>
+                                    <li>Each subject has a subject page displaying its articles.  </li>
+                                    <li>Each article has an article page displaying its relevant information and a link to download the full article.</li>
+                                    <li>Each author has an author page displaying the articles he has published along with their popularity metrics.</li>
                                 </ol>
 
 
@@ -247,7 +257,7 @@
                         <div class="content">
                             <div class="lead" style="font-size:18px;">
                                 <p>
-                                    Version 1.0
+                                    Version 2.0
                                     <br>
 
                                     You can check our <a href="https://github.com/Suchist/PublishSystem"
@@ -279,11 +289,13 @@
                             <div>
 
                                 <ul style="font-size:18px;">
-
                                     <li>In November 2018, we knew the requirements of system.</li>
                                     <li>In December 2018, we started this project</li>
                                     <li>In January 2019, we implemented most of requirements.</li>
                                     <li>In April 2019, we started making homepage of system.</li>
+                                    <li>On April 22, 2019, we change database from mysql to sqlite. </li>
+
+                                    <br><p>To be continued...</p>
                                 </ul>
 
 
@@ -311,6 +323,23 @@
                         <div class="content">
                             <div class="lead">
                                 <a style="font-size: 20px" href="http://lanlab.org/course/2018f/oo/project_description.pdf">Click me to check the <strong>project description</strong>!</a><br>
+                                <br>
+                                <h3>Background:</h3>
+                                <p style="font-size:18px;">
+                                    In his 2012 essay “A World Without Referees”, Larry Wasserman argues that the current academic publishing
+                                    system, peer review, is outdated (as it was invented 350 years ago) and bad (as it makes dissemination of new
+                                    knowledge hard). There should be a modern, non-blocking way to spread new scientific knowledge as widely
+                                    as possible. He suggests creating “a marketplace of ideas” where everyone is free to display his ideas, the
+                                    quality of which is determined not by a few arbitrarily chosen experts, but by many and most importantly,
+                                    by time. He describes the arXiv model and the “publish on your own website” model as two alternatives to
+                                    the restrictive, closed science model.<br>
+                                    The current publishing is also expensive and the cost has been rapidly increasing, which further impedes
+                                    spread of new knowledge. University libraries, even the richest ones like Harvard Library, are crippled by
+                                    high journal subscription fees. To counter such paywalls, the Harvard University has initiated the Harvard
+                                    Open Access Project. More recently, European universities and research organizations asked their employees
+                                    to publish their work only in journals that offer immediate open access, a move called Plan-S.
+                                </p>
+                                <h3>The original developer of the progress:</h3>
                                 <p style="font-size:18px;">
                                     1. We write initial requirement and function analysis of this project after reading
                                     the project description. There are some thinking about how to improve functions:<br>
