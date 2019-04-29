@@ -71,14 +71,24 @@ def publish():
             return u'You need enter correct email form'
         if subject_name==None:
             return u'You need enter subject name'
+        if Check.inDictElement(subject_name):
+            return u'There can not include dirty words'
         if title==None:
             return u'You need enter title'
+        if Check.inDictElement(title):
+            return u'There can not include dirty words'
         if abstract==None:
             return u'You need enter abstract'
+        if Check.inDictElement(abstract):
+            return u'There can not include dirty words'
         if  highlight==None:
             return u'You need enter highlight'
+        if Check.inDictElement(highlight):
+            return u'There can not include dirty words'
         if  content==None:
             return u'You need enter content'
+        if Check.inDictElement(content):
+            return u'There can not include dirty words'
 
         if session['code'] != validate:
             return u"The validate code is wrong please check"
@@ -260,7 +270,7 @@ def downVoteComment():
     # 没赞过返回0颜色变深
     else:
         return jsonify(1), 200
-
+    # 赞过了返回1颜色不变
 
 
 
