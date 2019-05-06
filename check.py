@@ -20,6 +20,6 @@ def inDictElement(term, dirtyword):
 
 #hidden email information
 def hiddenEmail(email):
-    return email[:2] + '****'+email[:-3]
+    return email[:3] + (len(email)-6)*'*'+email[:-3]
 
 
