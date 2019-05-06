@@ -101,7 +101,9 @@ def publish():
         else:
             return u"upload failed,The file format must be pdf"
 
-        user = User(id=id, email=email)
+        # hide email information
+
+        user = User(id=id,email=email)
         article = Article(title=title, content=content, abstract=abstract, highlight=highlight,viewCount=0,likeNumber=0,unlikeNumber=0)
         article.author = user
         #check whether the subject is exist
@@ -132,7 +134,7 @@ def addComment():
     comment_content = request.form.get('comment')
     article_id = request.form.get('article_id')
 
-    user = User(id=user_id, email=email)
+    user = User(id=user_id, email=Check.hiddenEmail(email))
     comment = Comment(content=comment_content )
     comment.author = user
     article = Article.query.filter(Article.id == article_id).first()
