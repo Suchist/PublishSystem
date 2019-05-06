@@ -17,3 +17,9 @@ def inDictElement(term, dirtyword):
     else:
         return 0
 
+
+#hidden email information
+def hiddenEmail(email):
+    return email[:2] + '****'+email[:-3]
+
+
