@@ -1,15 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>reward</title>
-</head>
-<body>
-<h3>赞助</h3>
-<span>
-如果您认为本网站的教程质量不错，读后觉得收获很大，预期工资涨幅能超过30%，不妨小额赞助我一下，让我有动力继续写出高质量的教程</span>
-<div><img src={{ url_for('static',filename='Image/donation.jpg') }}
-															width="160" height="160"  /></div>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Donation{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/donation.css') }}">
+{% endblock %}
+
+{% block main %}
+    <h3 class="page-tittle" style="text-align: center">The only donation page on this site:</h3>
+    <h5 class="page-tittle"  style="text-align: center">(All donation funds will be used as the Mozilla Foundation.)</h5>
+    <form action="">
+        <div class="form-container">
+            <div class="form-group">
+                <button type="button" id="btn-1" class="btn btn-default ">￥50</button>
+                <button type="button" id="btn-2" class="btn btn-default">￥100</button>
+                <button type="button" id="btn-3" class="btn btn-default">￥200</button>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="￥Other amount" name="amount" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="name" class="control-label">* Name: </label>
+                <input type="text" placeholder="Enter Your Name" name="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">Email: </label>
+                <input type="text" placeholder="Enter Your Eail" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="phone" class="control-label">Phone: </label>
+                <input type="text" placeholder="Enter Your Phone Number" name="phone" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="receipt" class="control-label"> Do you need a receipt:</label>
+            </div>
+            <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Don't need
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Paper invoice
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="advice" class="control-label">What do you want to tell us?</label>
+                <textarea name="advice" rows="5" placeholder="You think..." class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary  btn-lg active " style="float:right">SUBMIT</button>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <hr>
+                <h3>Scan the following QR code to pay:</h3>
+                <table>
+                    <tr>
+                        <td><img class="pay" style="width: 100%; height: auto;"
+                                 src="{{ url_for('static',filename='Image/alipay.jpg') }}">
+                        </td>
+                        <td><img class="pay" style="width: 100%; height: auto;"
+                                 src="{{ url_for('static',filename='Image/weixin.jpg') }}"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </form>
+    
+{% endblock %}
