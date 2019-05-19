@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}发布{% endblock %}
+{% block title %}Publish{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static',filename='CSS/AuthorPage.css') }}">
      <link rel="stylesheet" href="{{ url_for('static',filename='CSS/base.css') }}">
 {% endblock %}
 {% block main %}
-    <h1 class="page-title" align="center">publish article</h1>
+    <h1 class="page-title" align="center">Publish Article</h1>
     <form action="/publish" method="post">
         <div class="form-container">
             <div class="form-group">
@@ -17,30 +17,31 @@
             <input type="text" placeholder="Title"  name="article_title" class="form-control" required="required"><br>
             </div>
             <div class="form-group">
-                <span>subject</span>
+                <span>Subject</span>
             <input type="text" placeholder="subject"  name="article_subject" class="form-control" required="required"><br>
             </div>
             <div class="form-group">
-                <span>abstract</span>
+                <span>Abstract</span>
             <input type="text" placeholder="You can add abstract  here"  name="abstract" class="form-control" required="required"><br>
             </div>
             <div class="form-group">
-                <span>highlights</span>
+                <span>Highlights</span>
             <input type="text" placeholder="A Highlights section"  name="highlight" class="form-control" required="required"><br>
             </div>
 
             <div class="form-group">
-                <h5>You can write article here</h5>
+                <h5>You can write abstract here:</h5>
            <textarea name="content"    rows="10" class="form-control"  required="required" > </textarea>
             </div>
               <div class="form-group">
-                <input type="text" name="validate" style="..." required="required">
+                  <h5 >Verification Code</h5>
+                  <input type="text" name="validate" style="..." required="required">
                 <img  src="/code " onclick="this.src='/code?'+ Math.random()" style="...">
             </div>
 
-            <div class="form-group">
+            <div class="form-group ">
                 <input type="file" name="file">
-                <input type="submit" class="btn btn-primary" value="submit">
+                <input type="submit" class="btn btn-primary" value="submit" style="margin-top: 20px">
             </div>
 
         </div>
