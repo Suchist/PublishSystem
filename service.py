@@ -72,23 +72,23 @@ def publish():
         if subject_name==None:
             return u'You need enter subject name'
         if Check.inDictElement(subject_name):
-            return u'There can not include dirty words'
+            return u'Your subject should not include dirty words.'
         if title==None:
             return u'You need enter title'
         if Check.inDictElement(title):
-            return u'There can not include dirty words'
+            return u'Your title should not include dirty words.'
         if abstract==None:
             return u'You need enter abstract'
         if Check.inDictElement(abstract):
-            return u'There can not include dirty words'
+            return u'Your abstract should not include dirty words.'
         if  highlight==None:
             return u'You need enter highlight'
         if Check.inDictElement(highlight):
-            return u'There can not include dirty words'
+            return u'Your highlight should not include dirty words.'
         if  content==None:
             return u'You need enter content'
         if Check.inDictElement(content):
-            return u'There can not include dirty words'
+            return u'Your content should not include dirty words.'
 
         if session['code'] != validate:
             return u"The validate code is wrong please check"
@@ -133,6 +133,8 @@ def addComment():
     email = request.form.get('email')
     comment_content = request.form.get('comment')
     article_id = request.form.get('article_id')
+    if Check.inDictElement(comment_content):
+        return u'Your comments should not include dirty words.'
 
     user = User(id=user_id, email=Check.hiddenEmail(email))
     comment = Comment(content=comment_content )
