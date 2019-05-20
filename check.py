@@ -9,8 +9,8 @@ def validateEmail(email):
     #1.定义inappropriate words数组
     #2.遍历传进来的字符串
     #3.return value
-dirtyword =  {'fuck','shite'}
-def inDictElement(term, dirtyword):
+def inDictElement(term):
+    dirtyword = {'fuck', 'shite'}
     num_texts_with_term = len([True for text in dirtyword.values() if term.lower() in text.lower().split()])
     if num_texts_with_term == len(dirtyword):
         return 1
@@ -21,5 +21,4 @@ def inDictElement(term, dirtyword):
 #hidden email information
 def hiddenEmail(email):
     return email[:3] + (len(email)-6)*'*'+email[:-3]
-
 
