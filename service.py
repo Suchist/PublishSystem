@@ -106,6 +106,15 @@ def publish():
         user = User(id=id,email=email)
         article = Article(title=title, content=content, abstract=abstract, highlight=highlight,viewCount=0,likeNumber=0,unlikeNumber=0)
         article.author = user
+        
+        # check whether the article was published within a very short period.
+        # 1.find the user according to the email
+        # 2.check the title and createTime of the users.article
+        userExist = User.query.filter(User.email == email).first()
+        if userExist != None:
+            if userExist.article.title == title and time.time()-userExist.article.createTime < 400:
+                return 'You had published it within a very short period,please check it'
+
         #check whether the subject is exist
         subjectE = Subject.query.filter(Subject.name == subject_name).first()
         if subjectE==None:
