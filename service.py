@@ -10,6 +10,7 @@ import xhtml2pdf.pisa as pisa
 from io import BytesIO
 from werkzeug.utils import secure_filename
 from action import validate_code
+import time
 
 
 ALLOWED_EXTENSIONS = set(['pdf'])
